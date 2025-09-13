@@ -4,6 +4,10 @@ from datetime import datetime
 
 # Create your views here.
 
+def root(request):
+    return render(request, 'index.html')
+
+
 def say_hello(request):
     return HttpResponse('Hello Django')
 

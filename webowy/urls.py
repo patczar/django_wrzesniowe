@@ -22,6 +22,7 @@ from aplikacja.views import *
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", root),
     path("hello", say_hello),
     path("czas", ktora_godzina),
     path("czas_html", czas_html),

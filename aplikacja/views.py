@@ -14,3 +14,14 @@ def say_hello(request):
 def ktora_godzina(request):
     return HttpResponse(datetime.now())
 
+def czas_html(request):
+    godzina = datetime.now().strftime('%H:%M:%S')
+    html = f'''<html><head>
+    <title>Która godzina</title>
+    </head>
+    <body style="background-color: #FFFFDD">
+    <p>Teraz jest późna godzina <strong style="color:purple">{godzina}</strong></p>
+    </body>
+    </html>
+    '''
+    return HttpResponse(html, content_type='text/html;charset=UTF-8')

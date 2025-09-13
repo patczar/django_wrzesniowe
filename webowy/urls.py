@@ -18,11 +18,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from aplikacja.views import say_hello, ktora_godzina
+from aplikacja.views import *
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("hello", say_hello),
     path("czas", ktora_godzina),
-
+    path("czas_html", czas_html),
 ]

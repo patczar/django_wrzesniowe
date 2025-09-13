@@ -27,4 +27,5 @@ urlpatterns = [
     path("czas", ktora_godzina),
     path("czas_html", czas_html),
     path("czas_szablon", czas_szablon),
+    path("rozmowa", rozmowa),
 ]

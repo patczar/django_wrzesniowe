@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
 from datetime import datetime
 
 # Create your views here.
@@ -42,3 +42,13 @@ def czas_szablon(request):
                            'czas': czas,
                            'fmt': fmt,
                            })
+
+
+def rozmowa(request: HttpRequest) -> HttpResponse:
+    try:
+        imie = request.GET['imie']
+        powitanie = f'Witaj {imie}'
+    except KeyError:
+        powitanie = 'Hej, może się przestawisz?'
+
+    return render(request, 'rozmowa.html', context={'message': powitanie})

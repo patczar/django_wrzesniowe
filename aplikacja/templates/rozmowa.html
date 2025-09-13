@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Rozmowa</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styl.css'%}">
+</head>
+<body>
+<h1>Rozmowa</h1>
+<form>
+    <label for="imie">Jak masz na imię?</label>
+    <input type="text" name="imie" id="imie" value="{{request.GET.imie}}">
+    <br>
+    <label for="data_ur">Podaj datę urodzenia</label>
+    <input type="date" name="data_ur" id="data_ur" value="{{request.GET.data_ur}}">
+    <br>
+    <button>Wyślij</button>
+</form>
+
+<div class="wynik">
+    {{message}}
+</div>
+
+</body>
+</html>

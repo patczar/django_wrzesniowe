@@ -1,5 +1,5 @@
-from django.http import HttpResponse
 from django.shortcuts import render
+from django.http import HttpResponse
 from datetime import datetime
 
 # Create your views here.
@@ -25,3 +25,16 @@ def czas_html(request):
     </html>
     '''
     return HttpResponse(html, content_type='text/html;charset=UTF-8')
+
+def czas_szablon(request):
+    data_czas = datetime.now()
+    data = data_czas.strftime('%Y-%m-%d')
+    czas = data_czas.strftime('%H:%M:%S')
+    fmt = data_czas.strftime('%d.%m.%Y %H:%M')
+
+    return render(request, 'wyswietl_czas.html',
+                  context={'dt': data_czas,
+                           'data': data,
+                           'czas': czas,
+                           'fmt': fmt,
+                           })

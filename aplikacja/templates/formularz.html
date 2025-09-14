@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'/>
+    <title>Formularze</title>
+    <style>
+    form table {
+        background-color: #C8FFE8;
+        border: 2px solid #449966;
+    }
+
+    table.dane {
+        background-color: #FFFFDD;
+        border: 2px solid black;
+        border-collapse: collapse;
+    }
+
+    table.dane th, table.dane td {
+        border: 1px solid black;
+        padding: 2px;
+    }
+
+    td {
+        vertical-align: top;
+    }
+    </style>
+</head>
+<body>
+    <h1>Formularze</h1>
+    <p>Formularze (<code>form</code>) służą do wprowadzania danych przez użytkownika.</p>
+    <p>Aby w pełni z nich skorzystać, potrzebne jest wsparcie programistyczne po stronie frontendu (JS) lub backendu (PHP, Python, Java, Node.js itp).</p>
+    <p>Na potrzeby JS wystarczy, aby inputy miały określone <code>id</code>,
+    natomiast na potrzeby backendu, aby wartości pól były wysyłane jako parametry zapytań na serwer, inputy muszą mieć określone także atrybuty <code>name</code>.
+    W praktyce <code>id</code> i <code>name</code> są sobie równe.</p>
+
+    <p>Ze względów „dostępnościowych” zalecane jest, aby pola posiadały odpowiadające sobie opisy w elementach <code>label</code>. W atrybucie <code>for</code> podaje się <code>id</code> elementu, do którego to jest opis.</p>
+
+    <p>Elementy formularza sami musimy rozmieścić na powierzchni strony za pomocą jednej z technik:</p>
+    <ul>
+    <li>znaczników takich, jak <code>p</code>, <code>div</code> lub <code>br</code>,</li>
+    <li>tabel,</li>
+    <li>włąsnego stylu CSS,</li>
+        <li>gotowych zestawów stylów, np. popularnego <a href="https://getbootstrap.com/docs/5.3/layout/grid/">bootstrap</a>.</li>
+    </ul>
+    <p>W poniższym formularzu użyjemy prostej tabeli bez wewnętrznych krawędzi.</p>
+
+    <form>
+        <table>
+        <tr><td><label for="imie">Podaj imię: </label></td>
+            <td><input type="text" name="imie" id="imie"/></td></tr>
+
+        <tr><td><label for="haslo">Hasło:</label></td>
+            <td><input type="password" name="haslo" id="haslo"/></td></tr>
+
+        <tr><td rowspan="2">wybierz posiłki</td>
+            <td><input type="checkbox" name="obiad" id="obiad"/><label for="obiad">obiad</label></td></tr>
+        <tr><td><input type="checkbox" name="kolacja" id="kolacja"/><label for="kolacja">kolacja</label></td></tr>
+
+        <tr><td rowspan="3">wybierz dietę</td>
+            <td><input type="radio" name="dieta" value="mieso" id="dieta-mieso"/><label for="dieta-mieso">mięsna</label></td></tr>
+        <tr><td><input type="radio" name="dieta" value="wege" id="dieta-wege"/><label for="dieta-wege">wegetariańska</label></td></tr>
+        <tr><td><input type="radio" name="dieta" value="vegan" id="dieta-vegan"/><label for="dieta-vegan">wegańska</label></td></tr>
+        <tr><td>Plik</td><td><input type="file" name="plik"/></td></tr>
+
+        <!--HTML 5 wprowadził wiele nowych typów inputów. Od tego miejsca już się tak nie staram z labelami. -->
+        <tr><td>Liczba całkowita:</td><td><input type="number" name="wiek" placeholder="Podaj wiek..."/></td></tr>
+        <tr><td>Liczba z ułamkiem</td><td><input type="number" name="liczba" step="0.01" value="3.14"/></td></tr>
+        <tr><td>Email:</td><td><input type="email" name="email" /></td></tr>
+        <tr><td>Telefon:</td><td><input type="tel" name="telefon" /></td></tr>
+
+        <tr><td>Data:</td><td><input type="date" name="data" /></td></tr>
+        <tr><td>Godzina:</td><td><input type="time" name="czas" /></td></tr>
+<!--         <tr><td>Miesiąc:</td><td><input type="month" name="mc" /></td></tr> -->
+<!--         <tr><td>Tydzień:</td><td><input type="week" name="td" /></td></tr> -->
+        <tr><td>Kolor:</td><td><input type="color" name="kolor" /></td></tr>
+
+        <tr><td>Suwak:</td><td><input type="range" name="wartosc" min="0" max="100" value="30"/></td></tr>
+        <tr><td>Pasek postępu</td><td><progress max="100" value="75"/></td></tr>
+        <tr><td>Tekst wieloliniowy</td><td><textarea name="wypracowanie">Ala ma kota</textarea></td></tr>
+        <tr><td>Lista rozwijana:</td><td>
+            <select name="pora">
+            <option value="p1">wiosna</option>
+            <option value="p2">lato</option>
+            <option value="p3">jesień</option>
+            <option value="p4">zima</option>
+            </select></td>
+        </tr>
+        <tr><td>Guzik:</td><td><button type="button" onclick="alert('ding dong!')">Akcja JS</button></td></tr>
+        <tr><td>Guzik reset:</td><td><button type="reset">Wyczyść</button></td></tr>
+        <tr><td>Guzik submit:</td><td><button type="submit">Wyślij</button></td></tr>
+        <!-- ostatnie zachowanie jest domyślne dla guzików umieszczonych wewnątrz formularzy; można nie pisać type=submit -->
+        </table>
+        <input type="hidden" name="ukryty" value="tajny#kod"/>
+    </form>
+<hr/>
+    <table class="dane">
+        <tr><th>Parametr</th><th>Wartość</th></tr>
+        {% for k, v in request.GET.items %}
+            <tr><td>{{k}}</td><td>{{v}}</td></tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+

@@ -28,4 +28,7 @@ urlpatterns = [
     path("czas_html", czas_html),
     path("czas_szablon", czas_szablon),
     path("rozmowa", rozmowa),
+    path("kalkulator", kalkulator),
+    path("kalkulator_post", kalkulator_post),
+    path("formularz", formularz),
 ]

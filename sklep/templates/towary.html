@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Produkty naszego sklepu</title>
+</head>
+<body>
+<h1>Lista towarów</h1>
+
+<ul>
+    {% for p in products %}
+        <li>towar: {{ p.name }} - cena {{ p.price }} zł, {{ p.vat_jako_calkowita }}% VAT
+            {% if p.valid_to %}
+                <br/>(termin ważności {{p.valid_to}})
+            {% endif %}
+          {% if not p.available %}
+            <br/><strong>Produkt niedostępny</strong>
+          {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>

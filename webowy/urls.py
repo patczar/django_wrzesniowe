@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import path
 
 from aplikacja.views import *
+import sklep.views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -31,4 +32,7 @@ urlpatterns = [
     path("kalkulator", kalkulator),
     path("kalkulator_post", kalkulator_post),
     path("formularz", formularz),
+    path("sklep", sklep.views.lista_produktow),
+    path("sklep.txt", sklep.views.lista_produktow_txt),
+    path("sklep.html", sklep.views.lista_produktow_html)
 ]

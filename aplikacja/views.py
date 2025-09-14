@@ -69,6 +69,9 @@ def kalkulator(request:HttpRequest) -> HttpResponse:
     try:
         arg1 = int(request.GET['arg1'])
         arg2 = int(request.GET['arg2'])
+        # alternatywnie można uzyć metody .get do odczytu ze słownika; wtedy w razie braku danych wynikiem jest Nonr
+        # a można też wprost podać domyślną wartość, która mabyć przyjęta
+        # arg2 = int(request.GET.get('arg2', '0'))
         operacja = request.GET['operacja']
         wynik = oblicz(arg1, arg2, operacja)
     except Exception:

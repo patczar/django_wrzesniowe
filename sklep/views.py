@@ -14,6 +14,8 @@ def lista_produktow_txt(request: HttpRequest) -> HttpResponse:
     wynik = 'Produkty naszego sklepu:'
     for product in products:
         wynik += f'\n - {product.name} za {product.price} zł'
+        if product.valid_to is not None:
+            wynik += f', termin ważności: {product.valid_to}'
     return HttpResponse(wynik, content_type='text/plain;charset=utf-8')
 
 

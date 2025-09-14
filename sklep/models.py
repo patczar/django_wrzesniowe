@@ -12,3 +12,12 @@ class Product(models.Model):
     def vat_jako_calkowita(self):
         return int(100 * self.vat)
 
+    def __str__(self):
+        return f'{self.name} za {self.price} zł'
+
+    def __repr__(self):
+        return (f'Product(name={repr(self.name)}'
+                f', price={repr(self.price)}'
+                f', vat={repr(self.vat)}'
+                f', valid_to={repr(self.valid_to)}'
+                f', available={repr(self.available)})')
